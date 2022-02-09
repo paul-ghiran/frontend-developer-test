@@ -1,26 +1,30 @@
-import React from 'react';
-import api from '../lib/api';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import React from "react";
 
-const fetchData = async () => {
-  const result = await api.getUsersDiff();
-  console.log(result);
-};
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { Container, Box, Paper, Typography } from "@material-ui/core";
+
+import DynamicTable from "./DynamicTable";
+
+import THEMES from "../const/theme";
+import RESOURCES from "../const/resources";
+
+import "./style.css";
 
 export const App = () => {
   return (
-    <Container className="app" fixed>
-      <Box data-testid="app-box" m={2}>
-        <Typography>Your app should show up here.</Typography>
-        {/* Just a dummy fetcher to show how the api should be used, this should be removed */}
-        <Button variant="contained" color="primary" onClick={fetchData}>
-          Test data fetch
-        </Button>
-      </Box>
-    </Container>
+    <MuiThemeProvider theme={THEMES.primary}>
+      <Container className="app" fixed>
+        <Paper className="app__box">
+          <Typography variant="h4">Users</Typography>
+          <DynamicTable resource={RESOURCES.USERS} />
+        </Paper>
+
+        <Paper className="app__box">
+          <Typography variant="h4">Projects</Typography>
+          <DynamicTable resource={RESOURCES.PROJECTS} />
+        </Paper>
+      </Container>
+    </MuiThemeProvider>
   );
 };
 

@@ -1,0 +1,17 @@
+body {
+  background: #ededed;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-bottom: 0.75em;
+}
+
+.app__box {
+  padding: 16px;
+  margin-bottom: 24px;
+}
